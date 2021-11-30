@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 namespace MediaPlayer
-{ 
+{
     public partial class MediaPlayer : Form
     {
         CorePlayer _player = new CorePlayer();
@@ -21,12 +23,13 @@ namespace MediaPlayer
         }
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
             {
                 lstFile.Clear();
-                string[] list = openFileDialog.FileNames;
+                string[] list = Directory.GetFiles(fbd.SelectedPath);
                 int i = 0;
-                foreach (var item in list)
+                foreach (string item in list)
                 {
                     MediaFile file = new MediaFile(item);
                     file.FileNumber = i;
@@ -91,7 +94,7 @@ namespace MediaPlayer
             {
                 iCurFile = iCurFile.Next;
                 Processor();
-            }   
+            }
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
