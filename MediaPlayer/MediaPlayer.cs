@@ -15,8 +15,9 @@ namespace MediaPlayer
     public partial class MediaPlayer : Form
     {
         CorePlayer _player = new CorePlayer();
-        LinkedList<MediaFile> lstFile = new LinkedList<MediaFile>();
+        LinkedList<LinkedList<MediaFile>> playlist = new LinkedList<LinkedList<MediaFile>>();
         LinkedListNode<MediaFile> iCurFile;
+        LinkedListNode<LinkedList<MediaFile>> iCurPlaylist;
         public MediaPlayer()
         {
             InitializeComponent();
@@ -26,17 +27,25 @@ namespace MediaPlayer
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                lstFile.Clear();
-                string[] list = Directory.GetFiles(fbd.SelectedPath);
+                string[] album = Directory.GetDirectories(fbd.SelectedPath);
+                string[] pl = null;
                 int i = 0;
-                foreach (string item in list)
+                foreach (string item in album)
                 {
-                    MediaFile file = new MediaFile(item);
-                    file.FileNumber = i;
-                    lstFile.AddLast(file);
-                    i++;
+                    LinkedList<MediaFile> lstFile = new LinkedList<MediaFile>();
+                    pl = null;
+                    pl = Directory.GetFiles(item);
+                    foreach (string a in pl)
+                    {
+                        MediaFile file = new MediaFile(a);
+                        file.FileNumber = i;
+                        lstFile.AddLast(file);
+                        i++;
+                    }  
+                    playlist.AddLast(lstFile);   
+                    i = 0;
                 }
-                iCurFile = lstFile.First;
+                iCurPlaylist = playlist.First;
                 LoadPlayList();
                 Processor();
                 btnPlay.Text = "Pause";
@@ -45,7 +54,7 @@ namespace MediaPlayer
         private void LoadPlayList()
         {
             lstPlayList.DataSource = null;
-            lstPlayList.DataSource = lstFile.ToList();
+            lstPlayList.DataSource = playlist.ToList();
             lstPlayList.DisplayMember = "FileName";
         }
         private void Processor()
