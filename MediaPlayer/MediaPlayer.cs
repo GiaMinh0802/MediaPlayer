@@ -46,15 +46,16 @@ namespace MediaPlayer
                     i = 0;
                 }
                 iCurPlaylist = playlist.First;
-                LoadPlayList();
+                iCurFile = iCurPlaylist.Value.First;
+                LoadPlayList(iCurPlaylist.Value);
                 Processor();
                 btnPlay.Text = "Pause";
             }
         }
-        private void LoadPlayList()
+        private void LoadPlayList(LinkedList<MediaFile> playlst)
         {
             lstPlayList.DataSource = null;
-            lstPlayList.DataSource = playlist.ToList();
+            lstPlayList.DataSource = playlst.ToList();
             lstPlayList.DisplayMember = "FileName";
         }
         private void Processor()
@@ -96,6 +97,16 @@ namespace MediaPlayer
                 iCurFile = iCurFile.Previous;
                 Processor();
             }
+            else
+            {
+                if (iCurPlaylist.Previous != null)
+                {
+                    iCurPlaylist = iCurPlaylist.Previous;
+                    iCurFile = iCurPlaylist.Value.First;
+                    LoadPlayList(iCurPlaylist.Value);
+                    Processor();
+                }
+            }    
         }
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -104,6 +115,16 @@ namespace MediaPlayer
                 iCurFile = iCurFile.Next;
                 Processor();
             }
+            else
+            {
+                if (iCurPlaylist.Next != null)
+                {
+                    iCurPlaylist = iCurPlaylist.Next;
+                    iCurFile = iCurPlaylist.Value.First;
+                    LoadPlayList(iCurPlaylist.Value);
+                    Processor();
+                }
+            }    
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
@@ -121,6 +142,13 @@ namespace MediaPlayer
                 iCurFile = iCurFile.Next;
                 Processor();
             }
+            else if (position == _player.Length && iCurPlaylist.Next != null)
+            {
+                iCurPlaylist = iCurPlaylist.Next;
+                iCurFile = iCurPlaylist.Value.First;
+                LoadPlayList(iCurPlaylist.Value);
+                Processor();
+            }    
             trackBar.Value = position;
         }
         private void trackBar_MouseUp(object sender, MouseEventArgs e)
