@@ -43,6 +43,8 @@ namespace MediaPlayer
             this.pnScreen = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.NextPlaylist = new System.Windows.Forms.Button();
+            this.PrevPlaylist = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.pnScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -174,20 +176,48 @@ namespace MediaPlayer
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(405, 118);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(488, 110);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Playlist";
+            // 
+            // NextPlaylist
+            // 
+            this.NextPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.NextPlaylist.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NextPlaylist.Location = new System.Drawing.Point(571, 105);
+            this.NextPlaylist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.NextPlaylist.Name = "NextPlaylist";
+            this.NextPlaylist.Size = new System.Drawing.Size(70, 25);
+            this.NextPlaylist.TabIndex = 12;
+            this.NextPlaylist.Text = ">>";
+            this.NextPlaylist.UseVisualStyleBackColor = true;
+            this.NextPlaylist.Click += new System.EventHandler(this.NextPlaylist_Click);
+            // 
+            // PrevPlaylist
+            // 
+            this.PrevPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.PrevPlaylist.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.PrevPlaylist.Location = new System.Drawing.Point(405, 105);
+            this.PrevPlaylist.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.PrevPlaylist.Name = "PrevPlaylist";
+            this.PrevPlaylist.Size = new System.Drawing.Size(70, 25);
+            this.PrevPlaylist.TabIndex = 13;
+            this.PrevPlaylist.Text = "<<";
+            this.PrevPlaylist.UseVisualStyleBackColor = true;
+            this.PrevPlaylist.Click += new System.EventHandler(this.PrevPlaylist_Click);
             // 
             // MediaPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 267);
+            this.Controls.Add(this.PrevPlaylist);
+            this.Controls.Add(this.NextPlaylist);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pnScreen);
             this.Controls.Add(this.lstPlayList);
@@ -225,6 +255,8 @@ namespace MediaPlayer
         private System.Windows.Forms.Panel pnScreen;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button NextPlaylist;
+        private System.Windows.Forms.Button PrevPlaylist;
     }
 }
 
