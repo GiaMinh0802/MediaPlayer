@@ -60,6 +60,22 @@ namespace MediaPlayer
                 btnPlay.Text = "Pause";
             }
         }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            int n = iCurPlaylist.Value.Count;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string[] list = openFileDialog.FileNames;
+                foreach (string item in list)
+                {
+                    MediaFile file = new MediaFile(item);
+                    file.FileNumber = n;
+                    iCurPlaylist.Value.AddLast(file);
+                    n++;
+                }
+            }
+            LoadPlayList(iCurPlaylist.Value);
+        }
         private void LoadPlayList(LinkedList<MediaFile> playlst)
         {
             lstPlayList.DataSource = null;
@@ -110,7 +126,7 @@ namespace MediaPlayer
                 if (iCurPlaylist.Previous != null)
                 {
                     iCurPlaylist = iCurPlaylist.Previous;
-                    iCurFile = iCurPlaylist.Value.First;
+                    iCurFile = iCurPlaylist.Value.Last;
                     iCurNamePlaylist = iCurNamePlaylist.Previous;
                     label2.Text = iCurNamePlaylist.Value;
                     LoadPlayList(iCurPlaylist.Value);
@@ -201,7 +217,5 @@ namespace MediaPlayer
         {
             _player.Stop();
         }
-
-
     }
 }

@@ -45,6 +45,7 @@ namespace MediaPlayer
             this.label2 = new System.Windows.Forms.Label();
             this.NextPlaylist = new System.Windows.Forms.Button();
             this.PrevPlaylist = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar)).BeginInit();
             this.pnScreen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,7 +55,7 @@ namespace MediaPlayer
             // 
             this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar.Location = new System.Drawing.Point(36, 137);
+            this.trackBar.Location = new System.Drawing.Point(36, 158);
             this.trackBar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.trackBar.Name = "trackBar";
             this.trackBar.Size = new System.Drawing.Size(348, 45);
@@ -70,7 +71,7 @@ namespace MediaPlayer
             // 
             this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPlay.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPlay.Location = new System.Drawing.Point(101, 196);
+            this.btnPlay.Location = new System.Drawing.Point(101, 233);
             this.btnPlay.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(70, 35);
@@ -83,7 +84,7 @@ namespace MediaPlayer
             // 
             this.btnPrev.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrev.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPrev.Location = new System.Drawing.Point(26, 196);
+            this.btnPrev.Location = new System.Drawing.Point(26, 233);
             this.btnPrev.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(70, 35);
@@ -96,7 +97,7 @@ namespace MediaPlayer
             // 
             this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnNext.Location = new System.Drawing.Point(175, 196);
+            this.btnNext.Location = new System.Drawing.Point(175, 233);
             this.btnNext.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(70, 35);
@@ -109,7 +110,7 @@ namespace MediaPlayer
             // 
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStop.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStop.Location = new System.Drawing.Point(250, 196);
+            this.btnStop.Location = new System.Drawing.Point(250, 233);
             this.btnStop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(70, 35);
@@ -122,7 +123,7 @@ namespace MediaPlayer
             // 
             this.btnOpen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOpen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOpen.Location = new System.Drawing.Point(325, 196);
+            this.btnOpen.Location = new System.Drawing.Point(325, 233);
             this.btnOpen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(70, 35);
@@ -145,7 +146,7 @@ namespace MediaPlayer
             this.lstPlayList.Location = new System.Drawing.Point(405, 137);
             this.lstPlayList.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.lstPlayList.Name = "lstPlayList";
-            this.lstPlayList.Size = new System.Drawing.Size(236, 109);
+            this.lstPlayList.Size = new System.Drawing.Size(236, 94);
             this.lstPlayList.TabIndex = 8;
             // 
             // pnScreen
@@ -157,7 +158,7 @@ namespace MediaPlayer
             this.pnScreen.Location = new System.Drawing.Point(200, 12);
             this.pnScreen.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnScreen.Name = "pnScreen";
-            this.pnScreen.Size = new System.Drawing.Size(238, 84);
+            this.pnScreen.Size = new System.Drawing.Size(238, 87);
             this.pnScreen.TabIndex = 10;
             // 
             // pictureBox1
@@ -211,11 +212,25 @@ namespace MediaPlayer
             this.PrevPlaylist.UseVisualStyleBackColor = true;
             this.PrevPlaylist.Click += new System.EventHandler(this.PrevPlaylist_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(488, 233);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(70, 35);
+            this.btnAdd.TabIndex = 14;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // MediaPlayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 267);
+            this.ClientSize = new System.Drawing.Size(654, 282);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.PrevPlaylist);
             this.Controls.Add(this.NextPlaylist);
             this.Controls.Add(this.label2);
@@ -257,6 +272,7 @@ namespace MediaPlayer
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button NextPlaylist;
         private System.Windows.Forms.Button PrevPlaylist;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
 
