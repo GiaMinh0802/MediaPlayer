@@ -75,6 +75,35 @@ namespace MediaPlayer
                 }
             }
             LoadPlayList(iCurPlaylist.Value);
+            Processor();
+        }
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            int seleted = Convert.ToInt32(lstPlayList.SelectedIndex);
+            int i = 0;
+            LinkedListNode<MediaFile> k = iCurPlaylist.Value.First;
+            do
+            {
+                if (seleted == i)
+                {
+                    iCurPlaylist.Value.Remove(k);
+                    LoadPlayList(iCurPlaylist.Value);
+                    Processor();
+                    break;
+                }
+                else
+                {
+                    i++;
+                    k = k.Next;
+                }
+            } while (k != null);
+            int m = iCurPlaylist.Value.Count;
+            int number = 0;
+            foreach (MediaFile item in iCurPlaylist.Value)
+            {
+                item.FileNumber = number;
+                number++;
+            }    
         }
         private void LoadPlayList(LinkedList<MediaFile> playlst)
         {
@@ -217,5 +246,7 @@ namespace MediaPlayer
         {
             _player.Stop();
         }
+
+
     }
 }
